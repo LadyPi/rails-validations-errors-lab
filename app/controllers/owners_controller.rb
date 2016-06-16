@@ -10,16 +10,12 @@ class OwnersController < ApplicationController
 
   def create
     @owner = Owner.new(owner_params)
-    if @owner.save
-     redirect_to @owner
+    if owner.save
+     redirect_to owner_path(owner)
 
-    # redirect_to owner_path(owner)
-    # owner_params = params.require(:owner).permit(:first_name, :last_name, :email)
-    # owner = Owner.new(owner_params)
     else
      flash[:error] = owner.errors.full_messages.join(" ")
-     # owner_params = params.require(:owner).permit(:first_name, :last_name, :email)
-     # redirect_to owner_path(owner)
+     redirect_to new_owner_path
   end
 end
 
